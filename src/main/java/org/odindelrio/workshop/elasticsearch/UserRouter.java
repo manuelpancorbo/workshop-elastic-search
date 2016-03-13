@@ -12,20 +12,14 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/")
-public class Router {
+public class UserRouter {
 
     private UserService service;
-    private static final Logger logger = LoggerFactory.getLogger(Router.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserRouter.class);
 
     @Inject
-    public Router(UserService service) {
+    public UserRouter(UserService service) {
         this.service = service;
-    }
-
-    @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home() {
-        return "Welcome to your Spring Cloud project!";
     }
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)

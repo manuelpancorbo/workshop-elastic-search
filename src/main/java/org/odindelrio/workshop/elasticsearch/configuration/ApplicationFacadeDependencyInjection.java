@@ -1,7 +1,10 @@
 package org.odindelrio.workshop.elasticsearch.configuration;
 
-import org.odindelrio.workshop.elasticsearch.infrastructure.InMemoryUserRepository;
-import org.odindelrio.workshop.elasticsearch.infrastructure.JdbcUserRepository;
+import org.odindelrio.workshop.elasticsearch.application.AdvertService;
+import org.odindelrio.workshop.elasticsearch.domain.AdvertRepository;
+import org.odindelrio.workshop.elasticsearch.infrastructure.repository.advert.JdbcAdvertRepository;
+import org.odindelrio.workshop.elasticsearch.infrastructure.repository.user.InMemoryUserRepository;
+import org.odindelrio.workshop.elasticsearch.infrastructure.repository.user.JdbcUserRepository;
 import org.odindelrio.workshop.elasticsearch.application.UserService;
 import org.odindelrio.workshop.elasticsearch.domain.UserRepository;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +27,17 @@ public class ApplicationFacadeDependencyInjection {
     }
 
     @Bean
-    public UserService forMyService(UserRepository userRepository) {
+    public UserService forUserService(UserRepository userRepository) {
         return new UserService(userRepository);
+    }
+
+    @Bean
+    public AdvertRepository forAdvertRepository(JdbcTemplate jdbcTemplate) {
+        return new JdbcAdvertRepository(jdbcTemplate);
+    }
+
+    @Bean
+    public AdvertService forAdvertService(AdvertRepository advertRepository) {
+        return new AdvertService(advertRepository);
     }
 }

@@ -1,4 +1,4 @@
-package org.odindelrio.workshop.elasticsearch.infrastructure;
+package org.odindelrio.workshop.elasticsearch.infrastructure.repository.user;
 
 import org.odindelrio.workshop.elasticsearch.domain.User;
 import org.odindelrio.workshop.elasticsearch.domain.UserRepository;
@@ -34,7 +34,7 @@ public class JdbcUserRepository implements UserRepository {
             if (!subscriber.isUnsubscribed()) {
                 jdbcTemplate
                         .query(
-                                "SELECT id, name, lastname FROM users",
+                                "SELECT id, name, lastname FROM \"user\"",
                                 (rs, rowNum) -> new User(rs.getString("id"), rs.getString("name"), rs.getString("lastname"))
                         )
                         .forEach(user -> subscriber.onNext(user));
@@ -49,7 +49,7 @@ public class JdbcUserRepository implements UserRepository {
             if (!subscriber.isUnsubscribed()) {
                 User user = jdbcTemplate
                         .queryForObject(
-                                "SELECT id, name, lastname FROM users WHERE id = ?",
+                                "SELECT id, name, lastname FROM \"user\" WHERE id = ?",
                                 (rs, rowNum) -> new User(rs.getString("id"), rs.getString("name"), rs.getString("lastname")),
                                 userId
                         );
@@ -65,7 +65,7 @@ public class JdbcUserRepository implements UserRepository {
             if (!subscriber.isUnsubscribed()) {
                 jdbcTemplate
                         .query(
-                                "SELECT id, name, lastname FROM users WHERE name = ?",
+                                "SELECT id, name, lastname FROM \"user\" WHERE name = ?",
                                 (rs, rowNum) -> new User(rs.getString("id"), rs.getString("name"), rs.getString("lastname")),
                                 name
                         )

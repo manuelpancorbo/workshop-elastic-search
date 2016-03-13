@@ -1,4 +1,4 @@
-package org.odindelrio.workshop.elasticsearch.infrastructure;
+package org.odindelrio.workshop.elasticsearch.infrastructure.repository.user;
 
 import org.odindelrio.workshop.elasticsearch.domain.User;
 import org.odindelrio.workshop.elasticsearch.domain.UserRepository;
