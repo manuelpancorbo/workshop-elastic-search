@@ -1,5 +1,16 @@
 # Workshop elastic search
 
+## Requirements
+- docker
+- docker-machine
+- docker-compose
+- java 1.8
+
+## Run
+```bash
+./run-local.sh
+```
+
 ## Useful links
 - http://default.dm:9200/_plugin/head/ ES index viewer
 - http://default.dm:9200/_plugin/HQ/ Another ES viewer
