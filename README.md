@@ -11,6 +11,9 @@
 ./run-local.sh
 ```
 
+## Recommended client (chrome extension)
+https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig
+
 ## Useful links
 - http://default.dm:9200/_plugin/head/ ES index viewer
 - http://default.dm:9200/_plugin/HQ/ Another ES viewer
