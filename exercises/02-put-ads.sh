@@ -20,6 +20,16 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/2" -d'
     "zipCode": "08001"
 }'
 
+# Document with auto-generated uuid
+curl -XPOST "http://ws-elastic.dm:9200/ads/ad/" -d'
+{
+    "id": 50,
+    "title": "Random id document",
+    "body": "....",
+    "location": [2.1660139, 41.3791979],
+    "zipCode": "08001"
+}'
+
 # Will fail due to location
 curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
 {
@@ -30,3 +40,12 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
     "zipCode": "08001"
 }'
 
+# Will fail due to already exists document
+curl -XPOST "http://ws-elastic.dm:9200/ads/ad/2/_create" -d'
+{
+    "id": 2,
+    "title": "Another beautiful thing",
+    "body": "worst thing ever.",
+    "location": [2.1660139, 41.3791979],
+    "zipCode": "08001"
+}'

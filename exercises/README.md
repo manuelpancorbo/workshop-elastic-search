@@ -3,14 +3,18 @@
 https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
 
 ## 02: Put ads
+https://www.elastic.co/guide/en/elasticsearch/guide/current/index-doc.html
 
-Ensure creation of documents
-https://www.elastic.co/guide/en/elasticsearch/guide/current/create-doc.html
+
+Ensure creation of documents: https://www.elastic.co/guide/en/elasticsearch/guide/current/create-doc.html
 
  - If mapping does not exists, will be created.
+ - If id are not provided, uuid will be generated.
 
 ## 03: Partial update
 https://www.elastic.co/guide/en/elasticsearch/guide/current/partial-updates.html
+
+ - Version is incremented.
 
 ## 04: Delete
 https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html#delete-versioning
