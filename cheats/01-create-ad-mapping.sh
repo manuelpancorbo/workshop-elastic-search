@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Create index
-curl -XPUT "http://default.dm:9200/ads"
+curl -XPUT "http://ws-elastic.dm:9200/ads"
 
 # Create mapping
 curl -XPUT -d '
@@ -31,4 +31,4 @@ curl -XPUT -d '
       }
     }
 }
-' "http://default.dm:9200/ads/_mapping/ad"
+' "http://ws-elastic.dm:9200/ads/_mapping/ad"
