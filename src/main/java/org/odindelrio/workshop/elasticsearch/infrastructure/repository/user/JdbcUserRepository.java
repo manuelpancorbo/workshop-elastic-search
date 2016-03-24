@@ -21,7 +21,7 @@ public class JdbcUserRepository implements UserRepository {
     @Override
     public void add(User user) {
         jdbcTemplate.update(
-                "INSERT INTO users (id, name, lastname) values (?, ?, ?)",
+                "INSERT INTO \"user\" (id, name, lastname) values (?, ?, ?)",
                 user.getId(),
                 user.getName(),
                 user.getLastname()
