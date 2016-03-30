@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Location as array long/lat
 curl -XPUT "http://ws-elastic.dm:9200/ads/ad/5" -d'
 {
     "id": 5,

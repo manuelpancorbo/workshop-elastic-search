@@ -21,5 +21,9 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html
 
  - If mapping does not exists, will be created.
 
+## 05: Array handling
+https://www.elastic.co/guide/en/elasticsearch/reference/1.5/mapping-array-type.html
+https://www.google.es/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=elasticsearch+aggregation+bucket+document
+
 
 ## 99: WTF malformed JSON demonstration
