@@ -12,6 +12,10 @@ public class Advert
     private Double longitude;
     private String zipCode;
 
+    /**
+     * So, coupling domain objects to the serialization library eh?
+     * Don't do this in real projects!
+     */
     @JsonCreator
     public Advert(
         @JsonProperty("id") String id,
