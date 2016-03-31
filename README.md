@@ -21,5 +21,8 @@ https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgm
 - http://ws-elastic.dm:9200/_plugin/marvel
 - http://ws-elastic.dm:9200/_plugin/bigdesk
 
+## Basic queries for Postman
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0f9f2b1691b280932aa7)
+
 ### Related
 The spring boot application is based on the JDCB example in https://github.com/scm-spain/howto-spring-cloud
