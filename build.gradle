@@ -32,6 +32,7 @@ dependencies {
     compile("org.springframework:spring-jdbc")
     compile('org.postgresql:postgresql:9.4.+')
     compile('com.zaxxer:HikariCP:2.4.3')
+    compile('org.elasticsearch:elasticsearch:1.5.2')
 
     compile('net.rakugakibox.springbootext:spring-boot-ext-logback-access:1.0')
 }

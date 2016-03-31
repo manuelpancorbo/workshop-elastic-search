@@ -1,8 +1,11 @@
 package org.odindelrio.workshop.elasticsearch.configuration;
 
 import org.odindelrio.workshop.elasticsearch.application.AdvertService;
-import org.odindelrio.workshop.elasticsearch.domain.AdvertRepository;
+import org.odindelrio.workshop.elasticsearch.domain.AdvertReader;
+import org.odindelrio.workshop.elasticsearch.domain.AdvertWriter;
+import org.odindelrio.workshop.elasticsearch.infrastructure.repository.advert.ElasticSearchAdvertRepository;
 import org.odindelrio.workshop.elasticsearch.infrastructure.repository.advert.JdbcAdvertRepository;
+import org.odindelrio.workshop.elasticsearch.infrastructure.writer.advert.MixedAdvertWriter;
 import org.odindelrio.workshop.elasticsearch.infrastructure.repository.user.InMemoryUserRepository;
 import org.odindelrio.workshop.elasticsearch.infrastructure.repository.user.JdbcUserRepository;
 import org.odindelrio.workshop.elasticsearch.application.UserService;
@@ -11,6 +14,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Configuration
 public class ApplicationFacadeDependencyInjection {
@@ -32,12 +39,16 @@ public class ApplicationFacadeDependencyInjection {
     }
 
     @Bean
-    public AdvertRepository forAdvertRepository(JdbcTemplate jdbcTemplate) {
-        return new JdbcAdvertRepository(jdbcTemplate);
-    }
+    public AdvertService forAdvertService(JdbcTemplate jdbcTemplate) {
 
-    @Bean
-    public AdvertService forAdvertService(AdvertRepository advertRepository) {
-        return new AdvertService(advertRepository);
+        JdbcAdvertRepository jdbcAdvertReader = new JdbcAdvertRepository(jdbcTemplate);
+
+        Set<AdvertWriter> repositories = new LinkedHashSet<>();
+        repositories.add(jdbcAdvertReader);
+        repositories.add(new ElasticSearchAdvertRepository());
+
+        AdvertWriter advertWriter = new MixedAdvertWriter(repositories);
+
+        return new AdvertService(jdbcAdvertReader, advertWriter);
     }
 }

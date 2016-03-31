@@ -2,8 +2,7 @@ package org.odindelrio.workshop.elasticsearch.domain;
 
 import rx.Observable;
 
-public interface AdvertRepository {
-    void add(Advert advert);
+public interface AdvertReader {
 
     Observable<Advert> findAll();
 

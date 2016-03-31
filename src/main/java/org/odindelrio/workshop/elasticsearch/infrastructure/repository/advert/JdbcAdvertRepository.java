@@ -1,7 +1,8 @@
 package org.odindelrio.workshop.elasticsearch.infrastructure.repository.advert;
 
 import org.odindelrio.workshop.elasticsearch.domain.Advert;
-import org.odindelrio.workshop.elasticsearch.domain.AdvertRepository;
+import org.odindelrio.workshop.elasticsearch.domain.AdvertReader;
+import org.odindelrio.workshop.elasticsearch.domain.AdvertWriter;
 import org.odindelrio.workshop.elasticsearch.domain.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ import rx.Observable;
 
 import javax.inject.Inject;
 
-public class JdbcAdvertRepository implements AdvertRepository {
+public class JdbcAdvertRepository implements AdvertReader, AdvertWriter {
 
     private static final Logger logger = LoggerFactory.getLogger(JdbcAdvertRepository.class);
     private final JdbcTemplate jdbcTemplate;
@@ -34,6 +35,8 @@ public class JdbcAdvertRepository implements AdvertRepository {
             advert.getLongitude(),
             advert.getZipCode()
         );
+
+        logger.info(String.format("Advert id '%s' inserted in Postgres.", advert.getId()));
     }
 
     @Override
