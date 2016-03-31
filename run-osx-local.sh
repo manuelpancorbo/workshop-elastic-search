@@ -11,6 +11,8 @@ docker-machine start ${machineName}
 eval $(docker-machine env ${machineName})
 ./gradlew clean build
 
+docker stop $(docker ps -q)
+
 docker-compose rm -f
 docker-compose build
 docker-compose up
