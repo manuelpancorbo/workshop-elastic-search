@@ -42,13 +42,14 @@ public class ApplicationFacadeDependencyInjection {
     public AdvertService forAdvertService(JdbcTemplate jdbcTemplate) {
 
         JdbcAdvertRepository jdbcAdvertReader = new JdbcAdvertRepository(jdbcTemplate);
+        ElasticSearchAdvertRepository elasticSearchAdvertRepository = new ElasticSearchAdvertRepository();
 
-        Set<AdvertWriter> repositories = new LinkedHashSet<>();
-        repositories.add(jdbcAdvertReader);
-        repositories.add(new ElasticSearchAdvertRepository());
+        Set<AdvertWriter> writers = new LinkedHashSet<>();
+        writers.add(jdbcAdvertReader);
+        writers.add(elasticSearchAdvertRepository);
 
-        AdvertWriter advertWriter = new MixedAdvertWriter(repositories);
+        AdvertWriter advertWriter = new MixedAdvertWriter(writers);
 
-        return new AdvertService(jdbcAdvertReader, advertWriter);
+        return new AdvertService(jdbcAdvertReader, advertWriter, elasticSearchAdvertRepository);
     }
 }

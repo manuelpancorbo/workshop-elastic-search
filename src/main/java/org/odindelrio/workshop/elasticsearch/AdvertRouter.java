@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
@@ -26,8 +27,12 @@ public class AdvertRouter {
     }
 
     @RequestMapping(path = "/adverts", method = RequestMethod.GET)
-    public List<Advert> listAdverts() {
-        return service.listAdverts().toList().toBlocking().first();
+    public List<Advert> listAdverts(@RequestParam(name="search", required=false) String searchText) {
+        if (null == searchText || String.valueOf(searchText).isEmpty()) {
+            return service.listAdverts().toList().toBlocking().first();
+        } else {
+            return service.searchAdvert(searchText).toList().toBlocking().first();
+        }
     }
 
     @RequestMapping(path = "/adverts", method = RequestMethod.POST)
