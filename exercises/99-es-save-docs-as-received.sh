@@ -6,6 +6,7 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/99" -d'
     "id": 99,
     "title": "Malformed doc",
     "body": "Double brace!.",
+    "price": 500,
     "location": [2.1660139, 41.3791979],
     "zipCode": "08001"
 }}}}}}}}

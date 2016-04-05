@@ -16,6 +16,9 @@ curl -XPUT -d '
       "body" : {
         "type": "string"
       },
+      "price" : {
+        "type": "double"
+      },
       "zipCode" : {
         "type": "string"
       },

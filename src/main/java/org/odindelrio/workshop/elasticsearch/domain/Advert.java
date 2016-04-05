@@ -8,6 +8,7 @@ public class Advert
     private String id;
     private String title;
     private String body;
+    private Double price;
     private Double latitude;
     private Double longitude;
     private String zipCode;
@@ -21,6 +22,7 @@ public class Advert
         @JsonProperty("id") String id,
         @JsonProperty("title") String title,
         @JsonProperty("body") String body,
+        @JsonProperty("price") double price,
         @JsonProperty("latitude") double latitude,
         @JsonProperty("longitude") double longitude,
         @JsonProperty("zipCode") String zipCode
@@ -28,6 +30,7 @@ public class Advert
         this.id = id;
         this.title = title;
         this.body = body;
+        this.price = price;
         this.latitude = latitude;
         this.longitude = longitude;
         this.zipCode = zipCode;
@@ -43,6 +46,10 @@ public class Advert
 
     public String getBody() {
         return body;
+    }
+
+    public Double getPrice() {
+        return price;
     }
 
     public String getZipCode() {

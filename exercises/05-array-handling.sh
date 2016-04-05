@@ -6,6 +6,7 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/10" -d'
     "id": 10,
     "title": "Anohter one... really?",
     "body": "bahhh.",
+    "price": 2000,
     "location": [2.1660139, 41.3791979],
     "zipCode": [ "08001", "08002" ]
 }'

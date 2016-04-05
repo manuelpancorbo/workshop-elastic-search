@@ -52,6 +52,7 @@ public class ElasticSearchAdvertRepository implements AdvertSearcher, AdvertWrit
                 .field("id", advert.getId())
                 .field("title", advert.getTitle())
                 .field("body", advert.getBody())
+                .field("price", advert.getPrice())
                 .field("zipCode", advert.getZipCode())
                     .startObject("location")
                         // lat & lon abbreviates are required by ES instead of full names.
@@ -122,6 +123,7 @@ public class ElasticSearchAdvertRepository implements AdvertSearcher, AdvertWrit
             hit.getId(),
             (String) source.get("title"),
             (String) source.get("body"),
+            (Double) source.get("price"),
             location.get("lat"),
             location.get("lon"),
             (String) source.get("zipCode")

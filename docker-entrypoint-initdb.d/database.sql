@@ -8,6 +8,7 @@ CREATE TABLE "advert" (
   id        VARCHAR(255)     NOT NULL PRIMARY KEY,
   title     VARCHAR(255)     NOT NULL,
   body      TEXT             NULL,
+  price     DOUBLE PRECISION NOT NULL,
   latitude  DOUBLE PRECISION NOT NULL,
   longitude DOUBLE PRECISION NOT NULL,
   zip_code  CHAR(5)          NOT NULL

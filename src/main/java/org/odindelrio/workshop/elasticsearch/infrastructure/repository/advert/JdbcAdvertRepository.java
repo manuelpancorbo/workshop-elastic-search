@@ -26,11 +26,12 @@ public class JdbcAdvertRepository implements AdvertReader, AdvertWriter {
     public void add(Advert advert) {
         jdbcTemplate.update(
             "INSERT INTO " +
-                "advert (id, title, body, latitude, longitude, zip_code) " +
-                "VALUES (?, ?, ?, ?, ?, ?)",
+                "advert (id, title, body, price, latitude, longitude, zip_code) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)",
             advert.getId(),
             advert.getTitle(),
             advert.getBody(),
+            advert.getPrice(),
             advert.getLatitude(),
             advert.getLongitude(),
             advert.getZipCode()
@@ -43,9 +44,10 @@ public class JdbcAdvertRepository implements AdvertReader, AdvertWriter {
     public Observable<Advert> findAll() {
         return Observable.create(subscriber -> {
             if (!subscriber.isUnsubscribed()) {
+                logger.info("Finding all in Postgres...");
                 jdbcTemplate
                     .query(
-                        "SELECT id, title, body, latitude, longitude, zip_code " +
+                        "SELECT id, title, body, price, latitude, longitude, zip_code " +
                             "FROM advert",
                         rowMapper()
                     )
@@ -59,9 +61,11 @@ public class JdbcAdvertRepository implements AdvertReader, AdvertWriter {
     public Observable<Advert> findById(String id) {
         return Observable.create(subscriber -> {
             if (!subscriber.isUnsubscribed()) {
+                logger.info(String.format("Finding by id '%s' in postgres...", id));
+
                 Advert advert = jdbcTemplate
                     .queryForObject(
-                        "SELECT id, title, body, latitude, longitude, zip_code " +
+                        "SELECT id, title, body, price, latitude, longitude, zip_code " +
                             "FROM advert " +
                             "WHERE id = ?",
                         rowMapper(),
@@ -83,6 +87,7 @@ public class JdbcAdvertRepository implements AdvertReader, AdvertWriter {
                 rs.getString("id"),
                 rs.getString("title"),
                 rs.getString("body"),
+                rs.getDouble("price"),
                 location.getLatitude(),
                 location.getLongitude(),
                 rs.getString("zip_code")
