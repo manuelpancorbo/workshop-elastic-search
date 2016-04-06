@@ -39,4 +39,4 @@ curl -XPUT -d '
       }
     }
 }
-' "http://ws-elastic.dm:9200/ads/_mapping/ad"
+' "http://ws-elastic.dm:9200/ads/_mapping/ad" | python -m json.tool

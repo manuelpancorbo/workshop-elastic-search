@@ -42,7 +42,7 @@ curl -XPOST "http://ws-elastic.dm:9200/ads/ad/" -d'
     "price": 100,
     "location": [2.1660139, 41.3791979],
     "zipCode": "08001"
-}'
+}' | python -m json.tool
 
 # Will fail due to location
 curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
@@ -53,7 +53,7 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
     "price": 200,
     "location": "NotALocation",
     "zipCode": "08001"
-}'
+}' | python -m json.tool
 
 # Will fail due to already exists document
 curl -XPOST "http://ws-elastic.dm:9200/ads/ad/2/_create" -d'
@@ -64,4 +64,4 @@ curl -XPOST "http://ws-elastic.dm:9200/ads/ad/2/_create" -d'
     "price": 200,
     "location": [2.1660139, 41.3791979],
     "zipCode": "08001"
-}'
+}' | python -m json.tool

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-curl -XPUT "http://ws-elastic.dm:9200/ads/ad/5" -d'
+curl -XPUT "http://ws-elastic.dm:9200/ads/ad/5" -d' | python -m json.tool
 {
     "id": 5,
     "title": "Gonna be deleted",
@@ -10,4 +10,4 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/5" -d'
     "zipCode": "08001"
 }'
 
-curl -XDELETE "http://ws-elastic.dm:9200/ads/ad/5"
+curl -XDELETE "http://ws-elastic.dm:9200/ads/ad/5" | python -m json.tool
