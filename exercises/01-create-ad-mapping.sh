@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Delete index if exists
+curl -XDELETE "http://ws-elastic.dm:9200/ads"
+
 # Create index
 curl -XPUT "http://ws-elastic.dm:9200/ads"
 
@@ -11,10 +14,12 @@ curl -XPUT -d '
         "type": "integer"
       },
       "title" : {
-        "type": "string"
+        "type": "string",
+        "analyzer": "spanish"
       },
       "body" : {
-        "type": "string"
+        "type": "string",
+        "analyzer": "spanish"
       },
       "price" : {
         "type": "double"
