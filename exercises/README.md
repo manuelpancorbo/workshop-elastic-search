@@ -38,16 +38,26 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-
 ## 08: Match search
 https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html
 
- - 
-
 ## 09: Sorting by standard field
 https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
 
- - 
+ - Always break ties with some field sorting.
+
+## 10: Queries and filters together
+https://www.elastic.co/guide/en/elasticsearch/guide/current/_combining_queries_with_filters.html
+
+## 11: GeoQueries
+https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-geo-distance-filter.html
+https://www.elastic.co/guide/en/elasticsearch/guide/current/geohashes.html
+
+ - Note the cached filter in the query with geohashes
 
 ## 99: WTF malformed JSON demonstration
 Seems solved since 1.6: https://github.com/elastic/elasticsearch/pull/2315
 
 ## 100: Relevance is broken
 https://www.elastic.co/guide/en/elasticsearch/guide/current/relevance-is-broken.html
+
+## 101: Deep paging problem
+https://www.elastic.co/guide/en/elasticsearch/guide/current/pagination.html
 
