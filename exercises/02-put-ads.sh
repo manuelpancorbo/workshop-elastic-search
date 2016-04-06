@@ -22,6 +22,17 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/2" -d'
     "zipCode": "08001"
 }'
 
+# Location as array long/lat
+curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
+{
+    "id": 3,
+    "title": "Beautiful iphone",
+    "body": "iphone 6s",
+    "price": 400,
+    "location": [2.1660139, 41.3791979],
+    "zipCode": "08001"
+}'
+
 # Document with auto-generated uuid
 curl -XPOST "http://ws-elastic.dm:9200/ads/ad/" -d'
 {
