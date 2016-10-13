@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Location as string
-curl -XPUT "http://ws-elastic.dm:9200/ads/ad/1" -d'
+curl -XPUT "http://localhost:9200/ads/ad/1" -d'
 {
     "id": 1,
     "title": "Beautiful thing",
@@ -12,7 +12,7 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/1" -d'
 }'
 
 # Location as array long/lat
-curl -XPUT "http://ws-elastic.dm:9200/ads/ad/2" -d'
+curl -XPUT "http://localhost:9200/ads/ad/2" -d'
 {
     "id": 2,
     "title": "Another beautiful thing",
@@ -23,7 +23,7 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/2" -d'
 }'
 
 # Location as array long/lat
-curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
+curl -XPUT "http://localhost:9200/ads/ad/3" -d'
 {
     "id": 3,
     "title": "Beautiful iphone",
@@ -34,7 +34,7 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
 }'
 
 # Document with auto-generated uuid
-curl -XPOST "http://ws-elastic.dm:9200/ads/ad/" -d'
+curl -XPOST "http://localhost:9200/ads/ad/" -d'
 {
     "id": 50,
     "title": "Random id document",
@@ -45,7 +45,7 @@ curl -XPOST "http://ws-elastic.dm:9200/ads/ad/" -d'
 }' | python -m json.tool
 
 # Will fail due to location
-curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
+curl -XPUT "http://localhost:9200/ads/ad/3" -d'
 {
     "id": 3,
     "title": "Another beautiful thing",
@@ -56,7 +56,7 @@ curl -XPUT "http://ws-elastic.dm:9200/ads/ad/3" -d'
 }' | python -m json.tool
 
 # Will fail due to already exists document
-curl -XPOST "http://ws-elastic.dm:9200/ads/ad/2/_create" -d'
+curl -XPOST "http://localhost:9200/ads/ad/2/_create" -d'
 {
     "id": 2,
     "title": "Another beautiful thing",

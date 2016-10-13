@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Match all, score will always be 1
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match_all": {}
@@ -19,7 +19,7 @@ curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
 
 
 # Query has search, score will be variable
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match": {

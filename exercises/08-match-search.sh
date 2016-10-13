@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match": {
@@ -11,7 +11,7 @@ curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
 ' | python -m json.tool
 
 
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match": {
@@ -24,7 +24,7 @@ curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
 }
 ' | python -m json.tool
 
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match": {

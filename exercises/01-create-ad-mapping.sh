@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Delete index if exists
-curl -XDELETE "http://ws-elastic.dm:9200/ads"
+curl -XDELETE "http://localhost:9200/ads"
 
 # Create index
-curl -XPUT "http://ws-elastic.dm:9200/ads"
+curl -XPUT "http://localhost:9200/ads"
 
 # Create mapping
 curl -XPUT -d '
@@ -39,4 +39,4 @@ curl -XPUT -d '
       }
     }
 }
-' "http://ws-elastic.dm:9200/ads/_mapping/ad" | python -m json.tool
+' "http://localhost:9200/ads/_mapping/ad" | python -m json.tool

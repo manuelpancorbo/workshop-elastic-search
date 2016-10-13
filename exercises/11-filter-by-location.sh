@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Querying by lat,long
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match_all": {}
@@ -29,7 +29,7 @@ curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
 ' | python -m json.tool
 
 # Querying by geohash
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match_all": {}
@@ -55,7 +55,7 @@ curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
 ' | python -m json.tool
 
 # Querying by geo bounding box
-curl -XGET "http://ws-elastic.dm:9200/ads/ad/_search" -d '
+curl -XGET "http://localhost:9200/ads/ad/_search" -d '
 {
   "query": {
     "match_all": {}

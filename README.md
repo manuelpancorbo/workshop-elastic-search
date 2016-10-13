@@ -15,11 +15,11 @@
 https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig
 
 ## Useful links
-- http://ws-elastic.dm:9200/_plugin/head/ ES index viewer
-- http://ws-elastic.dm:9200/_plugin/HQ/ Another ES viewer
-- http://ws-elastic.dm:9200/_cluster/health?pretty=true
-- http://ws-elastic.dm:9200/_plugin/marvel
-- http://ws-elastic.dm:9200/_plugin/bigdesk
+- http://localhost:9200/_plugin/head/ ES index viewer
+- http://localhost:9200/_plugin/HQ/ Another ES viewer
+- http://localhost:9200/_cluster/health?pretty=true
+- http://localhost:9200/_plugin/marvel
+- http://localhost:9200/_plugin/bigdesk
 
 ## Basic queries for Postman
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0f9f2b1691b280932aa7)
