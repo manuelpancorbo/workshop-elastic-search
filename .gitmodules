@@ -1,3 +1,0 @@
-[submodule "bin/docker-osx-tools"]
-	path = bin/docker-osx-tools
-	url = git@github.com:odin-delrio/docker-osx-tools.git

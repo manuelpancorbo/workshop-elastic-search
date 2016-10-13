@@ -1,27 +1,30 @@
-postgres:
-  image: postgres:9.5
-  environment:
-    POSTGRES_USER: dbuser
-    POSTGRES_PASSWORD: dbpass
-    POSTGRES_DB: app
-  volumes:
-    - "./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
-  ports:
-    - 5432:5432
+version: "2"
 
-elasticsearch:
-  image: ypereirareis/docker-elk-and-plugins:latest
-  ports:
-    - 9200:9200
-    - 9300:9300
+services:
+  postgres:
+    image: postgres:9.5
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: dbpass
+      POSTGRES_DB: app
+    volumes:
+      - "./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+    ports:
+      - 5432:5432
 
-app:
-  image: jeanblanchard/java
-  ports:
-    - "8000:8000"
-  volumes:
-    - ./build/libs:/code
-  links:
-    - postgres:db
-    - elasticsearch:elasticsearch
-  command: java -jar -Dspring.profiles.active=dev /code/workshop-elastic-search-1.0-SNAPSHOT.jar
+  elasticsearch:
+    image: ypereirareis/docker-elk-and-plugins:latest
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  app:
+    image: jeanblanchard/java
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./build/libs:/code
+    links:
+      - postgres:db
+      - elasticsearch:elasticsearch
+    command: java -jar -Dspring.profiles.active=dev /code/workshop-elastic-search-1.0-SNAPSHOT.jar
