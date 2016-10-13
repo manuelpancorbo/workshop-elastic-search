@@ -67,3 +67,37 @@ curl -XPUT -d '
 
 #Getting created mapping
 curl -XGET "http://localhost:9200/ads/_mapping/ad" | python -m json.tool
+
+#Create an index template
+curl -XPUT "http://localhost:9200/_template/users_template" -d '
+{
+    "template": "user*",
+    "mappings": {
+        "user": {
+        "properties": {
+            "name" : {
+                "type": "string"
+            },
+            "location": {
+                "fielddata": {
+                  "precision": "3m",
+                  "format": "compressed"
+                },
+                "type": "geo_point",
+                "lat_lon": true,
+                "geohash_prefix": true,
+                "geohash_precision": "50m"
+            }
+         }
+      }
+    }
+}
+' | python -m json.tool
+
+# Add an user and demonstrate automatic index and mapping creation
+curl -XPOST "http://localhost:9200/users-2016/user" -d '
+{
+    "name": "Odín",
+    "location": [2.1660139, 41.3791979]
+}
+'
