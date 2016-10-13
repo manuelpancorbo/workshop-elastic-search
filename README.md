@@ -2,17 +2,15 @@
 
 ## Requirements
 - docker
-- docker-machine
 - docker-compose
 - java 1.8
 
 ## Run
 ```bash
-./run-osx-local.sh
+docker-compose up
+# Running only elastic search
+docker-compose up elasticsearch
 ```
-
-## Recommended client (chrome extension)
-https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig
 
 ## Useful links
 - http://localhost:9200/_plugin/head/ ES index viewer
