@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#Fixed in 2.x versions ;)
+
 # Location as array long/lat
 curl -XPUT "http://localhost:9200/ads/ad/99" -d'
 {
