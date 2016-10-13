@@ -13,7 +13,7 @@ services:
       - 5432:5432
 
   elasticsearch:
-    image: ypereirareis/docker-elk-and-plugins:latest
+    image: elasticsearch:2.3
     ports:
       - 9200:9200
       - 9300:9300
