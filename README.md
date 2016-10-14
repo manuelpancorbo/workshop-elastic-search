@@ -1,5 +1,8 @@
 # Workshop elastic search
 
+## Presentation
+[http://slides.com/odindelrio/elasticsearching](http://slides.com/odindelrio/elasticsearching)
+
 ## Requirements
 - docker
 - docker-compose
