@@ -49,7 +49,8 @@ curl -XPUT -d '
         "type": "double"
       },
       "zipCode" : {
-        "type": "string"
+        "type": "string",
+        "index": "not_analyzed"
       },
       "location": {
         "fielddata": {
