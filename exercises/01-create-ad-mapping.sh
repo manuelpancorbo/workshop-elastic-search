@@ -53,14 +53,7 @@ curl -XPUT -d '
         "index": "not_analyzed"
       },
       "location": {
-        "fielddata": {
-          "precision": "3m",
-          "format": "compressed"
-        },
-        "type": "geo_point",
-        "lat_lon": true,
-        "geohash_prefix": true,
-        "geohash_precision": "50m"
+        "type": "geo_point"
       }
     }
 }
@@ -80,14 +73,7 @@ curl -XPUT "http://localhost:9200/_template/users_template" -d '
                 "type": "string"
             },
             "location": {
-                "fielddata": {
-                  "precision": "3m",
-                  "format": "compressed"
-                },
-                "type": "geo_point",
-                "lat_lon": true,
-                "geohash_prefix": true,
-                "geohash_precision": "50m"
+                "type": "geo_point"
             }
          }
       }
@@ -96,7 +82,7 @@ curl -XPUT "http://localhost:9200/_template/users_template" -d '
 ' | python -m json.tool
 
 # Add an user and demonstrate automatic index and mapping creation
-curl -XPOST "http://localhost:9200/users-2016/user" -d '
+curl -XPOST "http://localhost:9200/users-2017/user" -d '
 {
     "name": "Odín",
     "location": [2.1660139, 41.3791979]
